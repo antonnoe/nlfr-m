@@ -43,6 +43,8 @@ Bron: README.md.
 - Op nederlanders.fr/m (in het kader) toont `index.html` nu "Bericht plaatsen op Nederlanders.fr" met twee knoppen: "1. Inloggen" (/m/signin) en "2. Bericht plaatsen" (/profiles/blog/new), plus "Nieuw? Word lid" (/m/signup) en een link naar InfoPoche. Alle links hebben target="_top"; alleen een tik navigeert, de pagina stuurt de bezoeker in het kader niet meer zelf weg.
 - Waarom twee stappen: de mobiele inlogpagina van NING negeert een opgegeven bestemming (gemeten) en landt na het inloggen altijd op /m. Ingelogd werkt het plaatsformulier /profiles/blog/new op de telefoon wel, dankzij een script in NING Aangepaste code. Daarom: eerst inloggen, daarna terug op /m en dan plaatsen.
 - Los geopend (window.top === window.self) gedrag ongewijzigd: meteen location.replace naar https://infopoche.fr/.
+- Ingelogde weergave (26-11-2026): in het kader luistert `index.html` naar postMessage van https://www.nederlanders.fr (of https://nederlanders.fr) met een geldig `nlfrProfile` (naam of id, zie EMBED.md). Dan toont hij "Je bent ingelogd als <naam>" (textContent) met één gouden knop "Bericht plaatsen"; de inlog- en lid-worden-regels verdwijnen.
+- Terugval: geen bericht, geen geldig profiel of een andere origin (bijvoorbeeld als NING het embedscript weghaalt) laat de uitgelogde twee-stappenweergave staan. Die is de standaard, dus geen flits.
 - Externe adressen: nederlanders.fr (/m/signin, /m/signup, /profiles/blog/new) en infopoche.fr. Verandert een adres, dan werkt alleen die knop niet meer; de pagina zelf blijft werken.
 
 Laatst nagelopen: 26 november 2026

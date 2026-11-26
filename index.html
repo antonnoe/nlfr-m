@@ -21,6 +21,7 @@ h1{font:500 28px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 8px;color:#F8F4E
 .k{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;box-sizing:border-box;padding:14px 20px;border-radius:12px;text-decoration:none;font:700 17px/1.2 Mulish,system-ui,sans-serif;color:#0E1A2E}
 .k1{background:#F4F1F0;margin-top:20px}
 .k2{background:#E8B04B;margin-top:22px}
+[hidden]{display:none!important}
 .s a{color:#AEB8C8;text-decoration:underline;display:inline-block;padding:6px 4px}
 hr{border:0;border-top:1px solid #2A3A55;margin:26px 0 16px}
 .f{font-size:14.5px;color:#F4F1F0;margin:0}
@@ -30,13 +31,37 @@ hr{border:0;border-top:1px solid #2A3A55;margin:26px 0 16px}
 <body>
 <div class="w"><div class="c">
 <h1>Bericht plaatsen op Nederlanders.fr</h1>
+<div id="uit">
 <p class="s">Op je telefoon gaat dat in twee stappen.</p>
 <a class="k k1" href="https://www.nederlanders.fr/m/signin" target="_top" rel="noopener">1. Inloggen</a>
 <p class="s" style="margin-top:10px">Je komt daarna vanzelf hier terug<br><a href="https://www.nederlanders.fr/m/signup" target="_top" rel="noopener">Nieuw? Word lid</a></p>
 <a class="k k2" href="https://www.nederlanders.fr/profiles/blog/new" target="_top" rel="noopener">2. Bericht plaatsen</a>
 <p class="s" style="margin-top:10px">Al ingelogd? Dan kun je meteen hier beginnen</p>
+</div>
+<div id="in" hidden>
+<p class="s" id="naam"></p>
+<a class="k k2" href="https://www.nederlanders.fr/profiles/blog/new" target="_top" rel="noopener">Bericht plaatsen</a>
+</div>
 <hr>
 <p class="f">Forum lezen en nieuws: <a href="https://infopoche.fr/" target="_top" rel="noopener">open InfoPoche</a></p>
 </div></div>
+<script>
+/* Ingelogde weergave: het embedscript op nederlanders.fr/m stuurt nlfrProfile als de bezoeker is ingelogd.
+   Standaard blijft de uitgelogde weergave staan; alleen een geldig profiel van nederlanders.fr schakelt om. Geen navigatie. */
+(function () {
+  if (window.top === window.self) return;
+  window.addEventListener("message", function (e) {
+    if (e.origin !== "https://www.nederlanders.fr" && e.origin !== "https://nederlanders.fr") return;
+    var d = e.data, p = d && typeof d === "object" ? d.nlfrProfile : null;
+    if (!p || typeof p !== "object") return;
+    var naam = typeof p.naam === "string" ? p.naam.trim() : "";
+    var id = typeof p.id === "string" ? p.id.trim() : "";
+    if (!naam && !id) return;
+    document.getElementById("naam").textContent = "Je bent ingelogd als " + (naam || id);
+    document.getElementById("uit").hidden = true;
+    document.getElementById("in").hidden = false;
+  });
+})();
+</script>
 </body>
 </html>
