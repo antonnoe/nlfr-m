@@ -31,6 +31,9 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
 .v p{margin:0;font-size:15px;line-height:1.4;font-weight:700}
 .v p+p{margin-top:6px;font-size:12.5px;line-height:1.35;font-weight:400;color:#4A5568}
 .vk{box-sizing:border-box;min-height:48px;width:100%;margin:0 0 14px;flex-direction:row}
+.b{box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:48px;width:100%;margin:12px 0 0;padding:10px 12px;border-radius:12px;background:#1b2a44;color:#fff;text-decoration:none;font:700 14.5px/1.25 Mulish,system-ui,sans-serif;text-align:center}
+.b:focus-visible{outline:3px solid #F4F1F0;outline-offset:2px}
+.bn{font-size:11.5px;line-height:1.35;color:#AEB8C8;margin:6px 0 0}
 .m{font-size:13px;margin:16px 0 0}
 .m a{color:#AEB8C8;text-decoration:underline;display:inline-block;padding:6px 4px}
 </style>
@@ -40,7 +43,8 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
 <h1>Nederlanders.fr</h1>
 <div id="uit">
 <div id="verz" hidden>
-<div class="v"><p>Je wilde een bericht plaatsen. Log eerst in, daarna tik je op Bericht plaatsen.</p><p>Vous vouliez publier un message ? Connectez-vous d'abord, puis touchez Bericht plaatsen.</p></div>
+<div class="v" id="vb"><p>Je wilde een bericht plaatsen. Log eerst in, daarna tik je op Bericht plaatsen.</p><p>Vous vouliez publier un message ? Connectez-vous d'abord, puis touchez Bericht plaatsen.</p></div>
+<div class="v" id="va" hidden><p>Je wilde een advertentie plaatsen. Log eerst in, daarna tik je onderaan op Eerst betalen.</p><p>Vous vouliez publier une annonce ? Connectez-vous d'abord, puis touchez Eerst betalen en bas.</p></div>
 <a class="t p vk" href="https://www.nederlanders.fr/m/signin" target="_top" rel="noopener"><span class="l">Inloggen</span></a>
 </div>
 <p class="s">Forum voor Nederlanders in Frankrijk</p>
@@ -64,6 +68,8 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
 <a class="t" href="https://laposta.nl/f/ssysinmqgflb" target="_top" rel="noopener"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="l">Nieuwsbrief</span><span class="u">dagelijks, gratis</span></a>
 <a class="t" href="https://cafeclaude.fr/" target="_top" rel="noopener"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14v10H11l-4 4v-4H5z"/><path d="M9 9h6"/></svg><span class="l">Café Claude</span><span class="u">vraag over Frankrijk</span></a>
 </div>
+<a class="b" href="https://www.nederlanders.fr/page/betaalpagina-berichten" target="_top" rel="noopener">Advertentie, vacature of vastgoed? Eerst betalen ↗</a>
+<p class="bn">Vacatures, vastgoed en bedrijfsberichten worden alleen geplaatst na betaling.</p>
 </div>
 </div></div>
 <script>
@@ -77,6 +83,10 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
     /* Uitgelogd na het plaatsformulier (bijv. na betaling): nlfrVan is het pad waar de bezoeker vandaan kwam. Het pad wordt nergens getoond. */
     if (d && typeof d === "object" && typeof d.nlfrVan === "string" && (!p || typeof p !== "object")) {
       if (d.nlfrVan.indexOf("/profiles/blog/new") === 0 || d.nlfrVan.indexOf("/profiles/blog/edit") === 0) {
+        document.getElementById("verz").hidden = false;
+      } else if (d.nlfrVan.indexOf("/page/betaalpagina-berichten") === 0) {
+        document.getElementById("vb").hidden = true;
+        document.getElementById("va").hidden = false;
         document.getElementById("verz").hidden = false;
       }
     }
