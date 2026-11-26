@@ -46,5 +46,6 @@ Bron: README.md.
 - Ingelogde weergave (26-11-2026): in het kader luistert `index.html` naar postMessage van https://www.nederlanders.fr (of https://nederlanders.fr) met een geldig `nlfrProfile` (naam of id, zie EMBED.md). Dan toont hij "Je bent ingelogd als <naam>" (textContent) met één gouden knop "Bericht plaatsen"; de inlog- en lid-worden-regels verdwijnen.
 - Terugval: geen bericht, geen geldig profiel of een andere origin (bijvoorbeeld als NING het embedscript weghaalt) laat de uitgelogde twee-stappenweergave staan. Die is de standaard, dus geen flits.
 - Externe adressen: nederlanders.fr (/m/signin, /m/signup, /profiles/blog/new) en infopoche.fr. Verandert een adres, dan werkt alleen die knop niet meer; de pagina zelf blijft werken.
+- Naam in de ingelogde weergave: NING levert de naam als HTML-entiteiten plus titel ("Anton No&euml;, beheerder en gastheer"); `index.html` decodeert die veilig met DOMParser, toont alleen het deel vóór de eerste komma via textContent en toont zonder bruikbare naam alleen "Je bent ingelogd" (nooit het id).
 
 Laatst nagelopen: 26 november 2026

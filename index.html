@@ -57,7 +57,15 @@ hr{border:0;border-top:1px solid #2A3A55;margin:26px 0 16px}
     var naam = typeof p.naam === "string" ? p.naam.trim() : "";
     var id = typeof p.id === "string" ? p.id.trim() : "";
     if (!naam && !id) return;
-    document.getElementById("naam").textContent = "Je bent ingelogd als " + (naam || id);
+    /* NING levert HTML-entiteiten ("No&euml;, beheerder en gastheer"): veilig decoderen via DOMParser (voert geen scripts uit),
+       resultaat alleen via textContent tonen. Alleen het deel voor de eerste komma; een id wordt nooit getoond. */
+    var schoon = "";
+    if (naam) {
+      try { schoon = (new DOMParser().parseFromString("<!doctype html><body>" + naam, "text/html").body.textContent || "").trim(); }
+      catch (err) { schoon = naam; }
+    }
+    var kort = schoon.split(",")[0].trim() || schoon;
+    document.getElementById("naam").textContent = kort ? "Je bent ingelogd als " + kort : "Je bent ingelogd";
     document.getElementById("uit").hidden = true;
     document.getElementById("in").hidden = false;
   });
