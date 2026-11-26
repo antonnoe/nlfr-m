@@ -4,33 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Nederlanders.fr mobiel is verhuisd naar InfoPoche</title>
+<title>Bericht plaatsen – Nederlanders.fr</title>
 <script>
 /* Los geopend (nieuwsbrief, snelkoppeling): meteen door naar InfoPoche.
-   In het kader op nederlanders.fr/m mag een pagina de bezoeker niet zelf wegsturen; daar staat de knop hieronder. */
+   In het kader op nederlanders.fr/m stuurt de pagina de bezoeker nooit zelf weg; alleen een tik op een knop navigeert. */
 (function () {
-  var DOEL = "https://infopoche.fr/";
-  try { if (window.top === window.self) { window.location.replace(DOEL); return; } } catch (e) {}
-  try { window.top.location.href = DOEL; } catch (e) {}
+  try { if (window.top === window.self) { window.location.replace("https://infopoche.fr/"); } } catch (e) {}
 })();
 </script>
 <style>
 html,body{margin:0;padding:0;background:#0E1A2E;color:#F4F1F0;font-family:Mulish,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
 .w{box-sizing:border-box;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 22px}
-h1{font:500 30px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 10px;color:#F8F4EC}
-.g{font:500 17px/1.4 Mulish,system-ui,sans-serif;color:#E8B04B;margin:0 0 18px}
-p{font-size:16px;line-height:1.6;margin:0 0 22px;max-width:420px}
-a.k{display:inline-block;min-height:48px;box-sizing:border-box;padding:14px 26px;border-radius:12px;background:#E8B04B;color:#0E1A2E;text-decoration:none;font:700 17px/1.2 Mulish,system-ui,sans-serif}
-.v{margin-top:16px;font-size:13.5px;color:#AEB8C8}
+.c{width:100%;max-width:420px}
+h1{font:500 28px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 8px;color:#F8F4EC}
+.s{font-size:13.5px;line-height:1.4;color:#AEB8C8;margin:0}
+.k{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;box-sizing:border-box;padding:14px 20px;border-radius:12px;text-decoration:none;font:700 17px/1.2 Mulish,system-ui,sans-serif;color:#0E1A2E}
+.k1{background:#F4F1F0;margin-top:20px}
+.k2{background:#E8B04B;margin-top:22px}
+.s a{color:#AEB8C8;text-decoration:underline;display:inline-block;padding:6px 4px}
+hr{border:0;border-top:1px solid #2A3A55;margin:26px 0 16px}
+.f{font-size:14.5px;color:#F4F1F0;margin:0}
+.f a{color:#E8B04B;display:inline-block;padding:6px 2px}
 </style>
 </head>
 <body>
-<div class="w">
-<h1>Nederlanders.fr mobiel is verhuisd</h1>
-<div class="g">Je vindt het nu in InfoPoche</div>
-<p>Het forum met alle reacties, het Frankrijknieuws en nog veel meer staan nu in één app: InfoPoche.</p>
-<a class="k" href="https://infopoche.fr/" target="_top" rel="noopener">Open InfoPoche</a>
-<div class="v">Gratis, geen account nodig, geen app store</div>
-</div>
+<div class="w"><div class="c">
+<h1>Bericht plaatsen op Nederlanders.fr</h1>
+<p class="s">Op je telefoon gaat dat in twee stappen.</p>
+<a class="k k1" href="https://www.nederlanders.fr/m/signin" target="_top" rel="noopener">1. Inloggen</a>
+<p class="s" style="margin-top:10px">Je komt daarna vanzelf hier terug<br><a href="https://www.nederlanders.fr/m/signup" target="_top" rel="noopener">Nieuw? Word lid</a></p>
+<a class="k k2" href="https://www.nederlanders.fr/profiles/blog/new" target="_top" rel="noopener">2. Bericht plaatsen</a>
+<p class="s" style="margin-top:10px">Al ingelogd? Dan kun je meteen hier beginnen</p>
+<hr>
+<p class="f">Forum lezen en nieuws: <a href="https://infopoche.fr/" target="_top" rel="noopener">open InfoPoche</a></p>
+</div></div>
 </body>
 </html>

@@ -39,4 +39,10 @@ Bron: README.md.
 - De oude gebundelde app staat ongewijzigd in `archief/nlfr-m-oud.html` (te bekijken op /archief/nlfr-m-oud). Terugzetten kan door dat bestand weer `index.html` te maken.
 - Nog te doen door Anton of via Claude in Chrome: de mobiele Ning-pagina /m zelf laten doorsturen, zodat ook de tussenkaart vervalt.
 
-Laatst nagelopen: 5 november 2026
+## Stand per 26 november 2026: kaart met twee stappen
+- Op nederlanders.fr/m (in het kader) toont `index.html` nu "Bericht plaatsen op Nederlanders.fr" met twee knoppen: "1. Inloggen" (/m/signin) en "2. Bericht plaatsen" (/profiles/blog/new), plus "Nieuw? Word lid" (/m/signup) en een link naar InfoPoche. Alle links hebben target="_top"; alleen een tik navigeert, de pagina stuurt de bezoeker in het kader niet meer zelf weg.
+- Waarom twee stappen: de mobiele inlogpagina van NING negeert een opgegeven bestemming (gemeten) en landt na het inloggen altijd op /m. Ingelogd werkt het plaatsformulier /profiles/blog/new op de telefoon wel, dankzij een script in NING Aangepaste code. Daarom: eerst inloggen, daarna terug op /m en dan plaatsen.
+- Los geopend (window.top === window.self) gedrag ongewijzigd: meteen location.replace naar https://infopoche.fr/.
+- Externe adressen: nederlanders.fr (/m/signin, /m/signup, /profiles/blog/new) en infopoche.fr. Verandert een adres, dan werkt alleen die knop niet meer; de pagina zelf blijft werken.
+
+Laatst nagelopen: 26 november 2026
