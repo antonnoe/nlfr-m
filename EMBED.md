@@ -75,6 +75,7 @@ staat.
   zijn naam en zijn de reageerknoppen direct actief; de app bewaart dit lokaal,
   zodat een bezoeker die later via de nieuwsbrief binnenkomt niet opnieuw langs
   het aanmeldscherm hoeft.
+- **`nlfrVan`** (optioneel) — het pad (`pathname`) van de nederlanders.fr-pagina waar de bezoeker vandaan kwam (`document.referrer` van `/m`). Begint het met `/profiles/blog/new` of `/profiles/blog/edit` en is er geen geldig `nlfrProfile`, dan toont de pagina boven de tegels de melding "Je wilde een bericht plaatsen. Log eerst in..." met een knop Inloggen.
 - **Reageren en plaatsen** gebeurt altijd op Ning zelf: de knoppen openen de
   berichtpagina bij het reactievak (`target="_top"`), waardoor de sessie
   meegaat. De app plaatst nooit zelf iets namens een lid — dat kan een browser

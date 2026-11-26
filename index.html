@@ -27,6 +27,10 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
 .u{font-size:11.5px;line-height:1.2;color:#AEB8C8}
 .t:focus-visible,.m a:focus-visible{outline:3px solid #F4F1F0;outline-offset:2px}
 [hidden]{display:none!important}
+.v{box-sizing:border-box;text-align:left;background:#F4F1F0;color:#0E1A2E;border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.v p{margin:0;font-size:15px;line-height:1.4;font-weight:700}
+.v p+p{margin-top:6px;font-size:12.5px;line-height:1.35;font-weight:400;color:#4A5568}
+.vk{box-sizing:border-box;min-height:48px;width:100%;margin:0 0 14px;flex-direction:row}
 .m{font-size:13px;margin:16px 0 0}
 .m a{color:#AEB8C8;text-decoration:underline;display:inline-block;padding:6px 4px}
 </style>
@@ -35,6 +39,10 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
 <div class="w"><div class="c">
 <h1>Nederlanders.fr</h1>
 <div id="uit">
+<div id="verz" hidden>
+<div class="v"><p>Je wilde een bericht plaatsen. Log eerst in, daarna tik je op Bericht plaatsen.</p><p>Vous vouliez publier un message ? Connectez-vous d'abord, puis touchez Bericht plaatsen.</p></div>
+<a class="t p vk" href="https://www.nederlanders.fr/m/signin" target="_top" rel="noopener"><span class="l">Inloggen</span></a>
+</div>
 <p class="s">Forum voor Nederlanders in Frankrijk</p>
 <div class="g">
 <a class="t p" href="https://www.nederlanders.fr/m/signin" target="_top" rel="noopener"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4"/><path d="M10 8l4 4-4 4"/><path d="M14 12H4"/></svg><span class="l">Inloggen</span></a>
@@ -66,6 +74,12 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
   window.addEventListener("message", function (e) {
     if (e.origin !== "https://www.nederlanders.fr" && e.origin !== "https://nederlanders.fr") return;
     var d = e.data, p = d && typeof d === "object" ? d.nlfrProfile : null;
+    /* Uitgelogd na het plaatsformulier (bijv. na betaling): nlfrVan is het pad waar de bezoeker vandaan kwam. Het pad wordt nergens getoond. */
+    if (d && typeof d === "object" && typeof d.nlfrVan === "string" && (!p || typeof p !== "object")) {
+      if (d.nlfrVan.indexOf("/profiles/blog/new") === 0 || d.nlfrVan.indexOf("/profiles/blog/edit") === 0) {
+        document.getElementById("verz").hidden = false;
+      }
+    }
     if (!p || typeof p !== "object") return;
     var naam = typeof p.naam === "string" ? p.naam.trim() : "";
     var id = typeof p.id === "string" ? p.id.trim() : "";
