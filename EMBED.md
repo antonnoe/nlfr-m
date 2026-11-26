@@ -76,6 +76,7 @@ staat.
   zodat een bezoeker die later via de nieuwsbrief binnenkomt niet opnieuw langs
   het aanmeldscherm hoeft.
 - **`nlfrVan`** (optioneel) — het pad (`pathname`) van de nederlanders.fr-pagina waar de bezoeker vandaan kwam (`document.referrer` van `/m`). Begint het met `/profiles/blog/new` of `/profiles/blog/edit` en is er geen geldig `nlfrProfile`, dan toont de pagina boven de tegels de melding "Je wilde een bericht plaatsen. Log eerst in..." met een knop Inloggen.
+- **`nlfrUit`** (optioneel) — het afmeldadres van NING zoals het in het menu op deze pagina staat (`a[href*="/main/authorization/signOut"]`, inclusief `target` en `xg_token`). De app toont dan de knop Uitloggen. Alleen een https-adres op nederlanders.fr met dat pad wordt gebruikt. Het bericht gaat alleen naar de origin van het iframe.
 - **Reageren en plaatsen** gebeurt altijd op Ning zelf: de knoppen openen de
   berichtpagina bij het reactievak (`target="_top"`), waardoor de sessie
   meegaat. De app plaatst nooit zelf iets namens een lid — dat kan een browser

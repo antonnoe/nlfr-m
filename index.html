@@ -33,6 +33,8 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
 .vk{box-sizing:border-box;min-height:48px;width:100%;margin:0 0 14px;flex-direction:row}
 .b{box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:48px;width:100%;margin:12px 0 0;padding:10px 12px;border-radius:12px;background:#1b2a44;color:#fff;text-decoration:none;font:700 14.5px/1.25 Mulish,system-ui,sans-serif;text-align:center}
 .b:focus-visible{outline:3px solid #F4F1F0;outline-offset:2px}
+.uo{display:none;box-sizing:border-box;align-items:center;justify-content:center;min-height:44px;width:100%;margin:14px 0 0;padding:8px 12px;border:1px solid rgba(174,184,200,.45);border-radius:12px;color:#AEB8C8;text-decoration:none;font:600 14px/1.25 Mulish,system-ui,sans-serif}
+.uo.z{display:flex}
 .bn{font-size:11.5px;line-height:1.35;color:#AEB8C8;margin:6px 0 0}
 .m{font-size:13px;margin:16px 0 0}
 .m a{color:#AEB8C8;text-decoration:underline;display:inline-block;padding:6px 4px}
@@ -70,6 +72,7 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
 </div>
 <a class="b" href="https://www.nederlanders.fr/page/betaalpagina-berichten" target="_top" rel="noopener">Advertentie, vacature of vastgoed? Eerst betalen ↗</a>
 <p class="bn">Vacatures, vastgoed en bedrijfsberichten worden alleen geplaatst na betaling.</p>
+<a class="uo" id="uitlog" href="#" target="_top" rel="noopener">Uitloggen</a>
 </div>
 </div></div>
 <script>
@@ -103,6 +106,16 @@ h1{font:500 23px/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px;color:#F8F4E
     }
     var kort = schoon.split(",")[0].trim() || schoon;
     document.getElementById("naam").textContent = kort ? "Je bent ingelogd als " + kort : "Je bent ingelogd";
+    /* Uitloggen: het embedscript geeft het afmeldadres van NING door (met de sessiesleutel xg_token).
+       Alleen een https-adres op nederlanders.fr met pad /main/authorization/signOut wordt gebruikt, anders geen knop. */
+    if (typeof d.nlfrUit === "string") {
+      try {
+        var u = new URL(d.nlfrUit);
+        if (u.protocol === "https:" && (u.hostname === "www.nederlanders.fr" || u.hostname === "nederlanders.fr") && u.pathname === "/main/authorization/signOut") {
+          var a = document.getElementById("uitlog"); a.href = u.href; a.className = "uo z";
+        }
+      } catch (err) {}
+    }
     document.getElementById("uit").hidden = true;
     document.getElementById("in").hidden = false;
   });
